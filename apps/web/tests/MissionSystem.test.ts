@@ -25,24 +25,24 @@ describe('MORPHYX Productivity Mission System', () => {
     expect(inboxZero.buildingId).toBe('metro-post');
     expect(inboxZero.totalProgress).toBe(5);
     expect(inboxZero.status).toBe('AVAILABLE');
-    expect(inboxZero.xpReward).toBe(150);
-    expect(inboxZero.creditsReward).toBe(75);
+    expect(inboxZero.xpReward).toBe(100);
+    expect(inboxZero.coinsReward).toBe(50);
 
     // Mission 2: Bank -> Budget Master
     expect(budgetMaster).toBeDefined();
     expect(budgetMaster.buildingId).toBe('apex-bank');
     expect(budgetMaster.totalProgress).toBe(5);
     expect(budgetMaster.status).toBe('AVAILABLE');
-    expect(budgetMaster.xpReward).toBe(200);
-    expect(budgetMaster.creditsReward).toBe(100);
+    expect(budgetMaster.xpReward).toBe(150);
+    expect(budgetMaster.coinsReward).toBe(75);
 
     // Mission 3: Tech Office -> File Organizer
     expect(fileOrganizer).toBeDefined();
     expect(fileOrganizer.buildingId).toBe('cybercore-tech');
     expect(fileOrganizer.totalProgress).toBe(5);
     expect(fileOrganizer.status).toBe('AVAILABLE');
-    expect(fileOrganizer.xpReward).toBe(175);
-    expect(fileOrganizer.creditsReward).toBe(90);
+    expect(fileOrganizer.xpReward).toBe(200);
+    expect(fileOrganizer.coinsReward).toBe(100);
   });
 
   it('provides 5 sample emails for Inbox Zero with Work, Personal, and Important categorization', () => {
@@ -174,12 +174,8 @@ describe('MORPHYX Productivity Mission System', () => {
     const baselineXp = INITIAL_PLAYER_STATS.xp;
 
     const afterCompletionXp = baselineXp + inboxZero.xpReward;
-    expect(afterCompletionXp).toBe(baselineXp + 150);
+    expect(afterCompletionXp).toBe(baselineXp + 100);
 
-    const newLevel = Math.max(
-      INITIAL_PLAYER_STATS.level,
-      Math.floor(afterCompletionXp / 400) + 1
-    );
-    expect(newLevel).toBeGreaterThanOrEqual(INITIAL_PLAYER_STATS.level);
+    expect(inboxZero.coinsReward).toBe(50);
   });
 });

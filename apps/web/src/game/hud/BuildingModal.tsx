@@ -216,8 +216,8 @@ export const BuildingModal: React.FC<BuildingModalProps> = ({ building, onClose 
                     <span className="px-2.5 py-1 rounded-md bg-urban-panel text-urban-sand font-mono text-xs font-bold border border-urban-sand/20">
                       +{mission.xpReward} XP
                     </span>
-                    <span className="px-2.5 py-1 rounded-md bg-urban-panel text-urban-terracotta font-mono text-xs font-bold border border-urban-terracotta/30">
-                      +{mission.creditsReward} CR
+                    <span className="px-2.5 py-1 rounded-md bg-urban-panel text-urban-sand font-mono text-xs font-bold border border-urban-sand/20">
+                      +{mission.coinsReward || mission.creditsReward} Coins
                     </span>
                   </div>
                 </div>
@@ -297,7 +297,7 @@ export const BuildingModal: React.FC<BuildingModalProps> = ({ building, onClose 
                     className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-urban-terracotta hover:bg-[#b76c4e] text-urban-ivory font-mono font-bold text-xs shadow-urban-button cursor-pointer flex items-center justify-center gap-2"
                   >
                     <Award className="w-4 h-4 text-urban-sand" />
-                    <span>Complete Mission (+150 XP, +75 CR)</span>
+                    <span>Complete Mission (+{mission.xpReward} XP, +{mission.coinsReward || mission.creditsReward} Coins)</span>
                   </button>
                 </div>
               )}
@@ -309,18 +309,28 @@ export const BuildingModal: React.FC<BuildingModalProps> = ({ building, onClose 
                     <div>
                       <div className="font-bold text-urban-sage uppercase tracking-wider">MISSION COMPLETED ✓</div>
                       <div className="text-urban-stone text-[11px]">
-                        Completed at {mission.completedAt}. Earned +{mission.xpReward} XP and &quot;{mission.badgeReward}&quot; title.
+                        Completed at {mission.completedAt}. Earned +{mission.xpReward} XP, +{mission.coinsReward || mission.creditsReward} Coins, and &quot;{mission.badgeReward}&quot; title.
                       </div>
                     </div>
                   </div>
 
-                  <button
-                    onClick={resetDemoMissions}
-                    className="px-3.5 py-1.5 rounded-lg bg-urban-panel hover:bg-urban-olive border border-urban-sand/20 text-urban-stone hover:text-urban-ivory text-xs font-mono cursor-pointer flex items-center gap-1.5"
-                  >
-                    <RotateCcw className="w-3 h-3" />
-                    <span>Reset Demo</span>
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => replayMission('inbox-zero')}
+                      className="px-3.5 py-1.5 rounded-lg bg-urban-terracotta/90 hover:bg-urban-terracotta border border-urban-sand/20 text-urban-ivory text-xs font-mono cursor-pointer flex items-center gap-1.5 font-bold shadow-urban-button"
+                      title="Deliberately replay mission to re-triage communications"
+                    >
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Replay Mission</span>
+                    </button>
+                    <button
+                      onClick={resetDemoMissions}
+                      className="px-3 py-1.5 rounded-lg bg-urban-panel hover:bg-urban-olive border border-urban-sand/20 text-urban-stone hover:text-urban-ivory text-xs font-mono cursor-pointer flex items-center gap-1.5"
+                    >
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Reset</span>
+                    </button>
+                  </div>
                 </div>
               )}
 
@@ -468,8 +478,8 @@ export const BuildingModal: React.FC<BuildingModalProps> = ({ building, onClose 
                     <span className="px-2.5 py-1 rounded-md bg-urban-panel text-urban-sand font-mono text-xs font-bold border border-urban-sand/20">
                       +{mission.xpReward} XP
                     </span>
-                    <span className="px-2.5 py-1 rounded-md bg-urban-panel text-urban-terracotta font-mono text-xs font-bold border border-urban-terracotta/30">
-                      +{mission.creditsReward} CR
+                    <span className="px-2.5 py-1 rounded-md bg-urban-panel text-urban-sand font-mono text-xs font-bold border border-urban-sand/20">
+                      +{mission.coinsReward || mission.creditsReward} Coins
                     </span>
                   </div>
                 </div>
@@ -549,7 +559,7 @@ export const BuildingModal: React.FC<BuildingModalProps> = ({ building, onClose 
                     className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-urban-terracotta hover:bg-[#b76c4e] text-urban-ivory font-mono font-bold text-xs shadow-urban-button cursor-pointer flex items-center justify-center gap-2"
                   >
                     <Award className="w-4 h-4 text-urban-sand" />
-                    <span>Complete Mission (+200 XP, +100 CR)</span>
+                    <span>Complete Mission (+{mission.xpReward} XP, +{mission.coinsReward || mission.creditsReward} Coins)</span>
                   </button>
                 </div>
               )}
@@ -561,18 +571,28 @@ export const BuildingModal: React.FC<BuildingModalProps> = ({ building, onClose 
                     <div>
                       <div className="font-bold text-urban-sage uppercase tracking-wider">MISSION COMPLETED ✓</div>
                       <div className="text-urban-stone text-[11px]">
-                        Completed at {mission.completedAt}. Earned +{mission.xpReward} XP and &quot;{mission.badgeReward}&quot; title.
+                        Completed at {mission.completedAt}. Earned +{mission.xpReward} XP, +{mission.coinsReward || mission.creditsReward} Coins, and &quot;{mission.badgeReward}&quot; title.
                       </div>
                     </div>
                   </div>
 
-                  <button
-                    onClick={resetDemoMissions}
-                    className="px-3.5 py-1.5 rounded-lg bg-urban-panel hover:bg-urban-olive border border-urban-sand/20 text-urban-stone hover:text-urban-ivory text-xs font-mono cursor-pointer flex items-center gap-1.5"
-                  >
-                    <RotateCcw className="w-3 h-3" />
-                    <span>Reset Demo</span>
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => replayMission('budget-master')}
+                      className="px-3.5 py-1.5 rounded-lg bg-urban-terracotta/90 hover:bg-urban-terracotta border border-urban-sand/20 text-urban-ivory text-xs font-mono cursor-pointer flex items-center gap-1.5 font-bold shadow-urban-button"
+                      title="Deliberately replay mission to re-audit expenses"
+                    >
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Replay Mission</span>
+                    </button>
+                    <button
+                      onClick={resetDemoMissions}
+                      className="px-3 py-1.5 rounded-lg bg-urban-panel hover:bg-urban-olive border border-urban-sand/20 text-urban-stone hover:text-urban-ivory text-xs font-mono cursor-pointer flex items-center gap-1.5"
+                    >
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Reset</span>
+                    </button>
+                  </div>
                 </div>
               )}
 
@@ -751,8 +771,8 @@ export const BuildingModal: React.FC<BuildingModalProps> = ({ building, onClose 
                     <span className="px-2.5 py-1 rounded-md bg-urban-panel text-urban-sand font-mono text-xs font-bold border border-urban-sand/20">
                       +{mission.xpReward} XP
                     </span>
-                    <span className="px-2.5 py-1 rounded-md bg-urban-panel text-urban-terracotta font-mono text-xs font-bold border border-urban-terracotta/30">
-                      +{mission.creditsReward} CR
+                    <span className="px-2.5 py-1 rounded-md bg-urban-panel text-urban-sand font-mono text-xs font-bold border border-urban-sand/20">
+                      +{mission.coinsReward || mission.creditsReward} Coins
                     </span>
                   </div>
                 </div>
@@ -832,7 +852,7 @@ export const BuildingModal: React.FC<BuildingModalProps> = ({ building, onClose 
                     className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-urban-terracotta hover:bg-[#b76c4e] text-urban-ivory font-mono font-bold text-xs shadow-urban-button cursor-pointer flex items-center justify-center gap-2"
                   >
                     <Award className="w-4 h-4 text-urban-sand" />
-                    <span>Complete Mission (+175 XP, +90 CR)</span>
+                    <span>Complete Mission (+{mission.xpReward} XP, +{mission.coinsReward || mission.creditsReward} Coins)</span>
                   </button>
                 </div>
               )}
@@ -844,18 +864,28 @@ export const BuildingModal: React.FC<BuildingModalProps> = ({ building, onClose 
                     <div>
                       <div className="font-bold text-urban-sage uppercase tracking-wider">MISSION COMPLETED ✓</div>
                       <div className="text-urban-stone text-[11px]">
-                        Completed at {mission.completedAt}. Earned +{mission.xpReward} XP and &quot;{mission.badgeReward}&quot; title.
+                        Completed at {mission.completedAt}. Earned +{mission.xpReward} XP, +{mission.coinsReward || mission.creditsReward} Coins, and &quot;{mission.badgeReward}&quot; title.
                       </div>
                     </div>
                   </div>
 
-                  <button
-                    onClick={resetDemoMissions}
-                    className="px-3.5 py-1.5 rounded-lg bg-urban-panel hover:bg-urban-olive border border-urban-sand/20 text-urban-stone hover:text-urban-ivory text-xs font-mono cursor-pointer flex items-center gap-1.5"
-                  >
-                    <RotateCcw className="w-3 h-3" />
-                    <span>Reset Demo</span>
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => replayMission('file-organizer')}
+                      className="px-3.5 py-1.5 rounded-lg bg-urban-terracotta/90 hover:bg-urban-terracotta border border-urban-sand/20 text-urban-ivory text-xs font-mono cursor-pointer flex items-center gap-1.5 font-bold shadow-urban-button"
+                      title="Deliberately replay mission to re-sort repository files"
+                    >
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Replay Mission</span>
+                    </button>
+                    <button
+                      onClick={resetDemoMissions}
+                      className="px-3 py-1.5 rounded-lg bg-urban-panel hover:bg-urban-olive border border-urban-sand/20 text-urban-stone hover:text-urban-ivory text-xs font-mono cursor-pointer flex items-center gap-1.5"
+                    >
+                      <RotateCcw className="w-3 h-3" />
+                      <span>Reset</span>
+                    </button>
+                  </div>
                 </div>
               )}
 

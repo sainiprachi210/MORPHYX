@@ -387,19 +387,14 @@ export const MissionProvider: React.FC<{ children: React.ReactNode }> = ({ child
       }
 
       // 3. Update player stats with XP, Coins, Level, and Completed IDs
-      let leveledUp = false;
-      let newLevelNumber = playerStats.level;
-
       setPlayerStats(prev => {
         if (prev.completedMissionIds?.includes(id)) {
           return prev;
         }
 
-        const newXp = prev.xp + earnedXp;
+        const newXp = (prev.xp || 0) + earnedXp;
         const newCoins = (prev.coins || 0) + earnedCoins;
         const computedLevelInfo = calculateLevelInfo(newXp);
-        leveledUp = computedLevelInfo.level > prev.level;
-        newLevelNumber = computedLevelInfo.level;
 
         const newBadge = {
           id: `badge-${id}-${Date.now()}`,
@@ -415,7 +410,7 @@ export const MissionProvider: React.FC<{ children: React.ReactNode }> = ({ child
           xp: newXp,
           coins: newCoins,
           credits: newCoins,
-          level: newLevelNumber,
+          level: computedLevelInfo.level,
           completedMissionsCount: prev.completedMissionsCount + 1,
           badges: [...prev.badges, newBadge],
           completedMissionIds: updatedCompletedIds,
@@ -423,6 +418,10 @@ export const MissionProvider: React.FC<{ children: React.ReactNode }> = ({ child
       });
 
       // 4. Trigger completion notification toast with rewards animation
+      const nextXp = (playerStats.xp || 0) + earnedXp;
+      const nextLevelInfo = calculateLevelInfo(nextXp);
+      const isLevelUp = nextLevelInfo.level > (playerStats.level || 1);
+
       setNotification({
         id: `notif-${Date.now()}`,
         missionId: id,
@@ -432,8 +431,8 @@ export const MissionProvider: React.FC<{ children: React.ReactNode }> = ({ child
         creditsEarned: earnedCoins,
         badgeName: target.badgeReward,
         timestamp: completedTimestamp,
-        leveledUp,
-        newLevel: newLevelNumber,
+        leveledUp: isLevelUp,
+        newLevel: nextLevelInfo.level,
       });
     },
     [missions, activeMissionId, playerStats]
