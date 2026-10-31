@@ -1,4 +1,10 @@
 import '@testing-library/jest-dom';
+import { cleanup } from '@testing-library/react';
+import { afterEach } from 'vitest';
+
+afterEach(() => {
+  cleanup();
+});
 
 // Mock WebGL and HTMLCanvasElement methods for JSDOM test environment
 if (typeof HTMLCanvasElement !== 'undefined') {

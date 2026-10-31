@@ -4,41 +4,43 @@ export default {
   theme: {
     extend: {
       colors: {
+        urban: {
+          olive: '#252923', // Deep olive charcoal — main dark surfaces & navigation
+          sand: '#D6C7A1', // Warm sand — highlights & selected elements
+          sage: '#78836B', // Muted sage — secondary accents
+          terracotta: '#A65F43', // Terracotta — important actions & warm accents
+          ivory: '#E8E4D9', // Warm ivory — primary text & light surfaces
+          stone: '#AAA99D', // Stone grey — secondary text
+          panel: '#30352E', // Dark panel — HUD & interface panels
+          border: 'rgba(214, 199, 161, 0.2)', // Subtle sand border
+          borderMuted: 'rgba(120, 131, 107, 0.25)',
+        },
+        // Backwards compatibility alias
         cyber: {
-          dark: '#050711',
-          card: '#0a0e24',
-          surface: '#111736',
-          border: 'rgba(0, 240, 255, 0.25)',
-          neonCyan: '#00f0ff',
-          neonPurple: '#9d4edd',
-          neonPink: '#ff007f',
-          matrixGreen: '#00ff88',
-          electricGold: '#ffd166',
+          dark: '#252923',
+          card: '#30352E',
+          surface: '#30352E',
+          border: 'rgba(214, 199, 161, 0.25)',
+          neonCyan: '#D6C7A1',
+          neonPurple: '#78836B',
+          neonPink: '#A65F43',
+          matrixGreen: '#78836B',
+          electricGold: '#D6C7A1',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Orbitron', 'sans-serif'],
-        mono: ['Rajdhani', 'monospace'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
-        'neon-cyan': '0 0 20px rgba(0, 240, 255, 0.45)',
-        'neon-purple': '0 0 25px rgba(157, 78, 221, 0.45)',
-        'cyber-card': '0 8px 32px 0 rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(0, 240, 255, 0.15)',
-      },
-      animation: {
-        'pulse-glow': 'pulseGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float-slow': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.9' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
+        'urban-sm': '0 2px 8px 0 rgba(0, 0, 0, 0.25)',
+        'urban-panel': '0 12px 32px -4px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(214, 199, 161, 0.15)',
+        'urban-button': '0 4px 14px 0 rgba(166, 95, 67, 0.35)',
+        // Retain alias for existing utility references
+        'neon-cyan': '0 4px 16px rgba(214, 199, 161, 0.25)',
+        'neon-purple': '0 4px 16px rgba(120, 131, 107, 0.25)',
+        'cyber-card': '0 12px 32px -4px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(214, 199, 161, 0.15)',
       },
     },
   },

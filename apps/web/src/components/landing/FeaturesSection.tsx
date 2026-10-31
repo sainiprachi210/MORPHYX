@@ -42,15 +42,15 @@ const FEATURES = [
 
 export const FeaturesSection: React.FC = () => {
   return (
-    <section id="nexus" className="py-20 px-4 sm:px-8 max-w-7xl mx-auto border-t border-slate-800">
+    <section id="nexus" className="py-20 px-4 sm:px-8 max-w-7xl mx-auto border-t border-urban-sand/15">
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/60 border border-purple-500/40 text-purple-300 text-xs font-mono tracking-widest uppercase">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-urban-panel border border-urban-sand/25 text-urban-sand text-xs font-mono tracking-widest uppercase">
           SYSTEM ARCHITECTURE
         </div>
-        <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-wide">
-          FOUR PILLARS OF <span className="text-cyan-400">MORPHYX</span>
+        <h2 className="text-3xl sm:text-4xl font-display font-bold text-urban-ivory tracking-wide">
+          FOUR PILLARS OF <span className="text-urban-sand">MORPHYX</span>
         </h2>
-        <p className="text-slate-400 text-base font-sans">
+        <p className="text-urban-stone text-base font-sans">
           Engineered as a high-performance monorepo uniting an Express API backend, strict shared
           schemas, and a responsive Three.js frontend.
         </p>
@@ -62,28 +62,25 @@ export const FeaturesSection: React.FC = () => {
           return (
             <div
               key={idx}
-              className="p-8 rounded-2xl cyber-glass cyber-glass-hover relative group overflow-hidden"
+              className="p-8 rounded-2xl bg-urban-panel border border-urban-sand/20 hover:border-urban-sand/40 shadow-urban-panel transition-all duration-300 relative group overflow-hidden"
             >
-              {/* Corner accent glow */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all duration-500"></div>
-
               <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-slate-900 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:text-purple-300 group-hover:border-purple-500/40 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-urban-olive border border-urban-sand/25 flex items-center justify-center text-urban-sand group-hover:text-urban-terracotta group-hover:border-urban-terracotta/40 transition-colors">
                   <Icon className="w-6 h-6" />
                 </div>
-                <span className="text-[11px] font-mono uppercase px-2.5 py-1 rounded bg-slate-950/90 text-cyan-400 border border-cyan-900/60">
+                <span className="text-[11px] font-mono uppercase px-2.5 py-1 rounded bg-urban-olive text-urban-sand border border-urban-sand/20">
                   {feature.tag}
                 </span>
               </div>
 
-              <div className="text-xs font-mono text-purple-400 tracking-wider uppercase mb-1">
+              <div className="text-xs font-mono text-urban-sage tracking-wider uppercase mb-1">
                 {feature.subtitle}
               </div>
-              <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors flex items-center gap-2">
+              <h3 className="text-xl font-display font-bold text-urban-ivory mb-3 group-hover:text-urban-sand transition-colors flex items-center gap-2">
                 <span>{feature.title}</span>
-                <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-urban-sand" />
               </h3>
-              <p className="text-slate-300 text-sm leading-relaxed">{feature.description}</p>
+              <p className="text-urban-stone text-sm leading-relaxed">{feature.description}</p>
             </div>
           );
         })}
