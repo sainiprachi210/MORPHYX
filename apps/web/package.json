@@ -12,7 +12,7 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "@morphyx/shared": "*",
+    "@morphyx/shared": "^0.1.0",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.17.14",
     "lucide-react": "^0.477.0",
